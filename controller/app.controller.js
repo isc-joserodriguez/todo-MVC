@@ -16,18 +16,24 @@ $(document).ready(function () {
     var btnDel = '.btnDel';
 
     function updateList() {
+        model.completed()
+        model = new Todo();
+        var left = model.todos.length;
+        model = new Todo();
+        var total = model.todos.length;
         todoList.empty();
+        $('#count').text(left + '/' + total + ' task(s) completed');
         switch (selecc) {
-            case 1:
-                model = new Todo();
-                break;
             case 2:
+                model = new Todo();
                 model.completed();
                 break;
             case 3:
+                model = new Todo();
                 model.uncompleted();
                 break
         }
+
         model.todos.forEach(todo => {
             todoList.append(
                 '<li id="taskLi' + todo.id + '" class="custom-checkbox mb-2 d-flex align-items-center justify-content-between task-' + todo.status + '">' +
@@ -51,12 +57,14 @@ $(document).ready(function () {
                 '</div>' +
                 '</div>');
         });
+
     }
     updateList();
 
     //Events
     inputTodo.on('keypress', function (e) {
         if (e.keyCode === 13 && inputTodo.val() !== '') {
+            model = new Todo();
             model.addTodo(inputTodo.val());
             inputTodo.val('');
             updateList();
@@ -64,26 +72,30 @@ $(document).ready(function () {
     });
     $(document).on('click', btnEdit, function () {
         var id = $(this).parent().parent().parent().parent().attr('id').substring(4);
+        model = new Todo();
         model.editTodo(parseInt(id), $('#edit' + id).val());
         $('#label' + id).text($('#edit' + id).val());
         updateList();
     });
     $(document).on('click', btnDel, function () {
         var id = $(this).parent().parent().parent().parent().attr('id').substring(4);
+        model = new Todo();
         model.deleteTodo(parseInt(id));
         updateList();
     });
-    $(document).on('change', '.check-task', function() {
-        var target=$(this);
-        var id=target.attr('id').substring(4);
-        if(target.prop( "checked")){
+    $(document).on('change', '.check-task', function () {
+        var target = $(this);
+        var id = target.attr('id').substring(4);
+        if (target.prop("checked")) {
             target.parent().removeClass('task-false');
             target.parent().addClass('task-true');
-        }else{
+        } else {
             target.parent().removeClass('task-true');
             target.parent().addClass('task-false');
         }
+        model = new Todo();
         model.statusTodo(parseInt(id));
+        updateList();
     });
     //Mostrar tareas
     btnAll.on('click', function () {

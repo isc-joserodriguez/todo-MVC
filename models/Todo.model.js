@@ -5,8 +5,6 @@ export class Todo {
     }
 
     addTodo(name) {
-        var todo = localStorage.getItem('todos');
-        this.todos = JSON.parse(todo) ? JSON.parse(todo) : [];
         const newTodo = {
             id: this.todos.length > 0 ? this.todos[this.todos.length - 1].id + 1 : 1,
             name: name,
@@ -19,8 +17,6 @@ export class Todo {
     }
 
     editTodo(id, updatedName) {
-        var todo = localStorage.getItem('todos');
-        this.todos = JSON.parse(todo) ? JSON.parse(todo) : [];
         this.todos = this.todos.map(todo =>
             todo.id === id ?
                 {
@@ -35,15 +31,11 @@ export class Todo {
     }
 
     deleteTodo(id) {
-        var todo = localStorage.getItem('todos');
-        this.todos = JSON.parse(todo) ? JSON.parse(todo) : [];
         this.todos = this.todos.filter(todo => todo.id !== id);
         localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 
     statusTodo(id) {
-        var todo = localStorage.getItem('todos');
-        this.todos = JSON.parse(todo) ? JSON.parse(todo) : [];
         this.todos = this.todos.map(todo =>
             todo.id === id ?
                 {
@@ -57,13 +49,9 @@ export class Todo {
         localStorage.setItem('todos', JSON.stringify(this.todos));
     }
     completed() {
-        var todo = localStorage.getItem('todos');
-        this.todos = JSON.parse(todo) ? JSON.parse(todo) : [];
         this.todos = this.todos.filter(todo => todo.status);
     }
     uncompleted() {
-        var todo = localStorage.getItem('todos');
-        this.todos = JSON.parse(todo) ? JSON.parse(todo) : [];
         this.todos = this.todos.filter(todo => !todo.status);
     }
 }

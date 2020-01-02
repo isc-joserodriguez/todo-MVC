@@ -16,8 +16,8 @@ $(document).ready(function () {
     var btnDel = '.btnDel';
 
     function updateList() {
-        model.completed()
         model = new Todo();
+        model.completed()
         var left = model.todos.length;
         model = new Todo();
         var total = model.todos.length;

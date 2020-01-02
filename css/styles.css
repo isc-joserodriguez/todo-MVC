@@ -1,0 +1,26 @@
+body {
+  background-color: #343a40;
+}
+.card-header > h1 {
+  font-family: "Ma Shan Zheng", cursive;
+  font-size: 80px;
+}
+#inputTodo {
+  font-size: 30px;
+}
+.edit-task {
+  font-size: 25px;
+}
+.card-body {
+  font-family: "Kalam", cursive;
+  font-size: 25px;
+}
+
+.task-true {
+  text-decoration: line-through;
+}
+
+.date {
+  color: red;
+  font-size: 15px;
+}

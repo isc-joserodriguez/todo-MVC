@@ -53,7 +53,7 @@ $(document).ready(function () {
                 '</div>' +
                 '</div>' +
                 '<br>' +
-                '<span class="date text-right">' + ((todo.status) ? 'Completed: '+todo.dateCreated : 'Created: '+todo.dateFinished) + '</span>' +
+                '<span class="date text-right">' + ((todo.status) ? 'Completed: '+todo.dateFinished : 'Created: '+todo.dateCreated) + '</span>' +
                 '</div>' +
                 '</div>');
         });

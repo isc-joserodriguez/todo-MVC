@@ -12,7 +12,7 @@ export class Todo {
             name: name,
             dateCreated: formatAMPM(),
             dateFinished: formatAMPM(),
-            status: true,
+            status: false,
         }
         this.todos.push(newTodo);
         localStorage.setItem('todos', JSON.stringify(this.todos));

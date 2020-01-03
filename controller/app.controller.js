@@ -35,27 +35,28 @@ $(document).ready(function () {
         }
 
         model.todos.forEach(todo => {
-            todoList.append(
-                '<li id="taskLi' + todo.id + '" class="custom-checkbox mb-2 d-flex align-items-center justify-content-between task-' + todo.status + '">' +
-                '<input type="checkbox" ' + ((todo.status) ? 'checked' : '') + ' class="custom-control-input check-task" id="task' + todo.id + '" name="task' + todo.id + '">' +
-                '<label id="label' + todo.id + '" class="custom-control-label" for="task' + todo.id + '">' + todo.name + '</label>' +
-                '<button type="button" class="ml-2 btn btn-sm btn-outline-info" data-toggle="collapse" href="#info' + todo.id + '" role="button" aria-expanded="false" aria-controls="info' + todo.id + '"><i class="fas fa-info"></i></button>' +
-                '</li>' +
-                '<div class="collapse" id="info' + todo.id + '">' +
-                '<div class="card card-body bg-dark">' +
-                '<div class="row">' +
-                '<div class="col-8">' +
-                '<input type="text" class="form-control edit-task" id="edit' + todo.id + '" value="' + todo.name + '">' +
-                '</div>' +
-                '<div class="col-2 d-flex align-item-center">' +
-                '<button type="button" class="btnEdit ml-2 btn btn-sm btn-outline-info"><i class="fas fa-pen"></i></button>' +
-                '<button type="button" class="btnDel ml-2 btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>' +
-                '</div>' +
-                '</div>' +
-                '<br>' +
-                '<span class="date text-right">' + ((todo.status) ? 'Completed: '+todo.dateFinished : 'Created: '+todo.dateCreated) + '</span>' +
-                '</div>' +
-                '</div>');
+            todoList.append(`
+                <li id="taskLi${todo.id}" class="custom-checkbox mb-2 d-flex align-items-center justify-content-between task-${todo.status}">
+                <input type="checkbox" ${ ((todo.status) ? 'checked' : '')} class="custom-control-input check-task" id="task${todo.id}" name="task${todo.id}">
+                <label id="label${ todo.id} " class="custom-control-label" for="task${todo.id}">${todo.name}</label>
+                <button type="button" class="ml-2 btn btn-sm btn-outline-info" data-toggle="collapse" href="#info${ todo.id}" role="button" aria-expanded="false" aria-controls="info${todo.id}"><i class="fas fa-info"></i></button>
+                </li>
+                <div class="collapse" id="info${ todo.id}">
+                <div class="card card-body bg-dark">
+                <div class="row">
+                <div class="col-8">
+                <input type="text" class="form-control edit-task" id="edit${ todo.id}" value="${todo.name}">
+                </div>
+                <div class="col-2 d-flex align-item-center">
+                <button type="button" class="btnEdit ml-2 btn btn-sm btn-outline-info"><i class="fas fa-pen"></i></button>
+                <button type="button" class="btnDel ml-2 btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                </div>
+                </div> 
+                <br>
+                <span class="date text-right">${ ((todo.status) ? 'Completed: ' + todo.dateFinished : 'Created: ' + todo.dateCreated)}</span>
+                </div>
+                </div>
+                `);
         });
 
     }
